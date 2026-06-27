@@ -1,0 +1,18 @@
+/* ============================================================
+   MUTAIBUTSU — WEBFONTS
+   Pulled from Google Fonts. All three carry the glyph coverage
+   the brand needs (Latin + Japanese kana/kanji where noted).
+   NOTE: loaded via CDN @import — no local binaries are bundled.
+   ============================================================ */
+
+/* Inter — UI / instrument font for the Engine Laboratory dashboard */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Mochiy Pop One — POP / mascot display (Latin + JP) */
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+
+/* Zen Kaku Gothic New — GOTHIC / body & UI (Latin + JP), 4 weights */
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap');
+
+/* Space Mono — MONO / telemetry & data, regular + bold + italics */
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');

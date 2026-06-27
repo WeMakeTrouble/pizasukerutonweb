@@ -1,0 +1,620 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "audio/**",
+              "components/core/**",
+              "components/expanse/**",
+              "components/lab/**",
+              "components/narrative/**",
+              "components/realm/**",
+              "realm-visualiser/**",
+              "ui_kits/engine-laboratory/**",
+              "ui_kits/realm-observer/**"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:Inter|Mochiy Pop One|Zen Kaku Gothic New|Space Mono))/i]",
+        "message": "Font not provided by the design system. Available: Inter, Mochiy Pop One, Zen Kaku Gothic New, Space Mono."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Badge'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|world|tone|style|key|ref|className|style|children)$/]",
+        "message": "<Badge> doesn't accept that prop. Declared props: children, world, tone, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Badge'] > JSXAttribute[name.name='world'] > Literal[value!=/^(?:realm|lab)$/]",
+        "message": "<Badge> world must be one of 'realm' | 'lab'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Badge'] > JSXAttribute[name.name='tone'] > Literal[value!=/^(?:show|travel|dayoff|error|neutral)$/]",
+        "message": "<Badge> tone must be one of 'show' | 'travel' | 'dayoff' | 'error' | 'neutral'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='TimelineBeat'] > JSXAttribute > JSXIdentifier[name!=/^(?:n|name|fn|pacing|rigidity|desc|key|ref|className|style|children)$/]",
+        "message": "<TimelineBeat> doesn't accept that prop. Declared props: n, name, fn, pacing, rigidity, desc."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='TimelineBeat'] > JSXAttribute[name.name='fn'] > Literal[value!=/^(?:orientation|disruption|resistance|preparation|commitment|escalation|revelation|resolution)$/]",
+        "message": "<TimelineBeat> fn must be one of 'orientation' | 'disruption' | 'resistance' | 'preparation' | 'commitment' | 'escalation' | 'revelation' | 'resolution'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='TimelineBeat'] > JSXAttribute[name.name='rigidity'] > Literal[value!=/^(?:hard|soft)$/]",
+        "message": "<TimelineBeat> rigidity must be one of 'hard' | 'soft'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='BlueprintCard'] > JSXAttribute > JSXIdentifier[name!=/^(?:id|name|source|evidence|scales|beats|conflict|description|selected|compact|onClick|style|key|ref|className|style|children)$/]",
+        "message": "<BlueprintCard> doesn't accept that prop. Declared props: id, name, source, evidence, scales, beats, conflict, description, selected, compact, onClick, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='BlueprintCard'] > JSXAttribute[name.name='evidence'] > Literal[value!=/^(?:peer-reviewed|industry-validated|cultural-tradition)$/]",
+        "message": "<BlueprintCard> evidence must be one of 'peer-reviewed' | 'industry-validated' | 'cultural-tradition'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|world|variant|size|icon|disabled|onClick|style|key|ref|className|style|children)$/]",
+        "message": "<Button> doesn't accept that prop. Declared props: children, world, variant, size, icon, disabled, onClick, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='world'] > Literal[value!=/^(?:realm|lab)$/]",
+        "message": "<Button> world must be one of 'realm' | 'lab'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:primary|secondary|danger|ghost)$/]",
+        "message": "<Button> variant must be one of 'primary' | 'secondary' | 'danger' | 'ghost'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:sm|md|lg)$/]",
+        "message": "<Button> size must be one of 'sm' | 'md' | 'lg'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='CharacterChip'] > JSXAttribute > JSXIdentifier[name!=/^(?:name|src|mood|selected|onClick|style|key|ref|className|style|children)$/]",
+        "message": "<CharacterChip> doesn't accept that prop. Declared props: name, src, mood, selected, onClick, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Campaign'] > JSXAttribute > JSXIdentifier[name!=/^(?:target_id|target_name|perpetrator_id|perpetrator_name|campaign_type|status|raw_potency|campaign_potency|impact_debility|impact_dependency|impact_dread|tick|key|ref|className|style|children)$/]",
+        "message": "<Campaign> doesn't accept that prop. Declared props: target_id, target_name, perpetrator_id, perpetrator_name, campaign_type, status, raw_potency, campaign_potency, impact_debility, impact_dependency, impact_dread, tick."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='EngineRow'] > JSXAttribute > JSXIdentifier[name!=/^(?:index|name|desc|status|role|onClick|style|key|ref|className|style|children)$/]",
+        "message": "<EngineRow> doesn't accept that prop. Declared props: index, name, desc, status, role, onClick, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='EngineRow'] > JSXAttribute[name.name='status'] > Literal[value!=/^(?:wired|built|designed|stub|concept|orphan)$/]",
+        "message": "<EngineRow> status must be one of 'wired' | 'built' | 'designed' | 'stub' | 'concept' | 'orphan'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='EngineRow'] > JSXAttribute[name.name='role'] > Literal[value!=/^(?:ACT|PER|NAR)$/]",
+        "message": "<EngineRow> role must be one of 'ACT' | 'PER' | 'NAR'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='FunctionTag'] > JSXAttribute > JSXIdentifier[name!=/^(?:fn|variant|size|glow|style|key|ref|className|style|children)$/]",
+        "message": "<FunctionTag> doesn't accept that prop. Declared props: fn, variant, size, glow, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='FunctionTag'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:dot|tag)$/]",
+        "message": "<FunctionTag> variant must be one of 'dot' | 'tag'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='HeuristicCard'] > JSXAttribute > JSXIdentifier[name!=/^(?:prompt|author|work|situation|beatContext|register|style|key|ref|className|style|children)$/]",
+        "message": "<HeuristicCard> doesn't accept that prop. Declared props: prompt, author, work, situation, beatContext, register, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='HeuristicCard'] > JSXAttribute[name.name='register'] > Literal[value!=/^(?:instrument|mythic)$/]",
+        "message": "<HeuristicCard> register must be one of 'instrument' | 'mythic'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='MonoLabel'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|tone|style|key|ref|className|style|children)$/]",
+        "message": "<MonoLabel> doesn't accept that prop. Declared props: children, tone, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='MonoLabel'] > JSXAttribute[name.name='tone'] > Literal[value!=/^(?:mute|accent|text|ink)$/]",
+        "message": "<MonoLabel> tone must be one of 'mute' | 'accent' | 'text' | 'ink'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='MutaiWisp'] > JSXAttribute > JSXIdentifier[name!=/^(?:leak|intensity|size|label|style|key|ref|className|style|children)$/]",
+        "message": "<MutaiWisp> doesn't accept that prop. Declared props: leak, intensity, size, label, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SpeechBubble'] > JSXAttribute > JSXIdentifier[name!=/^(?:who|children|tail|style|key|ref|className|style|children)$/]",
+        "message": "<SpeechBubble> doesn't accept that prop. Declared props: who, children, tail, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SpeechBubble'] > JSXAttribute[name.name='tail'] > Literal[value!=/^(?:left|right)$/]",
+        "message": "<SpeechBubble> tail must be one of 'left' | 'right'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SpeechRung'] > JSXAttribute > JSXIdentifier[name!=/^(?:stage|pattern|example|key|ref|className|style|children)$/]",
+        "message": "<SpeechRung> doesn't accept that prop. Declared props: stage, pattern, example."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SpeechRung'] > JSXAttribute[name.name='stage'] > Literal[value!=/^(?:holophrastic|two_word|telegraphic|multiword|complex)$/]",
+        "message": "<SpeechRung> stage must be one of 'holophrastic' | 'two_word' | 'telegraphic' | 'multiword' | 'complex'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StatCard'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|value|sub|tone|style|key|ref|className|style|children)$/]",
+        "message": "<StatCard> doesn't accept that prop. Declared props: label, value, sub, tone, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StatCard'] > JSXAttribute[name.name='tone'] > Literal[value!=/^(?:accent|travel|dayoff|error|text)$/]",
+        "message": "<StatCard> tone must be one of 'accent' | 'travel' | 'dayoff' | 'error' | 'text'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StatusDot'] > JSXAttribute > JSXIdentifier[name!=/^(?:status|size|pulse|style|key|ref|className|style|children)$/]",
+        "message": "<StatusDot> doesn't accept that prop. Declared props: status, size, pulse, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='StatusDot'] > JSXAttribute[name.name='status'] > Literal[value!=/^(?:wired|built|designed|stub|concept|orphan)$/]",
+        "message": "<StatusDot> status must be one of 'wired' | 'built' | 'designed' | 'stub' | 'concept' | 'orphan'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='TerminalLine'] > JSXAttribute > JSXIdentifier[name!=/^(?:text|tone|key|ref|className|style|children)$/]",
+        "message": "<TerminalLine> doesn't accept that prop. Declared props: text, tone."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='TerminalLine'] > JSXAttribute[name.name='tone'] > Literal[value!=/^(?:out|you|ok|warn|error)$/]",
+        "message": "<TerminalLine> tone must be one of 'out' | 'you' | 'ok' | 'warn' | 'error'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Toast'] > JSXAttribute > JSXIdentifier[name!=/^(?:show|message|state|style|key|ref|className|style|children)$/]",
+        "message": "<Toast> doesn't accept that prop. Declared props: show, message, state, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Toast'] > JSXAttribute[name.name='state'] > Literal[value!=/^(?:running|success|error)$/]",
+        "message": "<Toast> state must be one of 'running' | 'success' | 'error'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='YureiPresence'] > JSXAttribute > JSXIdentifier[name!=/^(?:mode|hunger|breachAt|tick|style|key|ref|className|style|children)$/]",
+        "message": "<YureiPresence> doesn't accept that prop. Declared props: mode, hunger, breachAt, tick, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='YureiPresence'] > JSXAttribute[name.name='mode'] > Literal[value!=/^(?:WITHDRAWN|BREACHED)$/]",
+        "message": "<YureiPresence> mode must be one of 'WITHDRAWN' | 'BREACHED'."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {
+      "Badge": {
+        "replaces": []
+      },
+      "TimelineBeat": {
+        "replaces": []
+      },
+      "BlueprintCard": {
+        "replaces": []
+      },
+      "Button": {
+        "replaces": []
+      },
+      "CharacterChip": {
+        "replaces": []
+      },
+      "Campaign": {
+        "replaces": []
+      },
+      "EngineRow": {
+        "replaces": []
+      },
+      "FunctionTag": {
+        "replaces": []
+      },
+      "HeuristicCard": {
+        "replaces": []
+      },
+      "MonoLabel": {
+        "replaces": []
+      },
+      "MutaiWisp": {
+        "replaces": []
+      },
+      "SpeechBubble": {
+        "replaces": []
+      },
+      "SpeechRung": {
+        "replaces": []
+      },
+      "StatCard": {
+        "replaces": []
+      },
+      "StatusDot": {
+        "replaces": []
+      },
+      "TerminalLine": {
+        "replaces": []
+      },
+      "Toast": {
+        "replaces": []
+      },
+      "YureiPresence": {
+        "replaces": []
+      }
+    },
+    "tokens": [
+      "--accent",
+      "--accent-deep",
+      "--amber",
+      "--arousal-high",
+      "--arousal-low",
+      "--beat-commitment",
+      "--beat-disruption",
+      "--beat-escalation",
+      "--beat-orientation",
+      "--beat-preparation",
+      "--beat-resistance",
+      "--beat-resolution",
+      "--beat-revelation",
+      "--bob",
+      "--bond",
+      "--border-hair",
+      "--border-ink",
+      "--border-lab",
+      "--cheese",
+      "--cheese-deep",
+      "--contentment",
+      "--danger",
+      "--despair",
+      "--despair-deep",
+      "--despair-signal",
+      "--dur-base",
+      "--dur-fast",
+      "--dur-slow",
+      "--ease-cartoon",
+      "--ease-out",
+      "--eng-active",
+      "--eng-built",
+      "--eng-concept",
+      "--eng-designed",
+      "--eng-orphan",
+      "--eng-stub",
+      "--eng-wired",
+      "--evidence-cultural",
+      "--evidence-industry",
+      "--evidence-peer",
+      "--font-gothic",
+      "--font-mono",
+      "--font-pop",
+      "--font-ui",
+      "--glow-amber",
+      "--glow-phosphor",
+      "--info",
+      "--ink",
+      "--ink-bold",
+      "--ink-faint",
+      "--ink-hair",
+      "--ink-heavy",
+      "--ink-line",
+      "--ink-mute",
+      "--ink-soft",
+      "--jon-black",
+      "--jon-blue",
+      "--jon-brown",
+      "--jon-green",
+      "--jon-grey",
+      "--jon-orange",
+      "--jon-pink",
+      "--jon-purple",
+      "--jon-red",
+      "--jon-turquoise",
+      "--jon-white",
+      "--jon-yellow",
+      "--lab-bg",
+      "--lab-dayoff",
+      "--lab-error",
+      "--lab-hover",
+      "--lab-line",
+      "--lab-line-2",
+      "--lab-panel",
+      "--lab-pressed",
+      "--lab-raise",
+      "--lab-show",
+      "--lab-text",
+      "--lab-text-2",
+      "--lab-text-mute",
+      "--lab-travel",
+      "--lab-well",
+      "--lh-body",
+      "--lh-mono",
+      "--lh-snug",
+      "--lh-tight",
+      "--maxw-prose",
+      "--maxw-shell",
+      "--mutai-leak",
+      "--ok",
+      "--paper",
+      "--paper-2",
+      "--phosphor",
+      "--phosphor-dim",
+      "--phosphor-glow",
+      "--pineapple",
+      "--r-lg",
+      "--r-md",
+      "--r-pill",
+      "--r-sm",
+      "--r-xl",
+      "--realm-grass",
+      "--realm-grass-2",
+      "--realm-grass-ink",
+      "--realm-sky",
+      "--realm-sky-2",
+      "--shadow-pop",
+      "--shadow-soft",
+      "--shadow-sticker",
+      "--shadow-sticker-lg",
+      "--signal-blue",
+      "--signal-live",
+      "--slice-red",
+      "--sp-0",
+      "--sp-1",
+      "--sp-10",
+      "--sp-12",
+      "--sp-16",
+      "--sp-2",
+      "--sp-20",
+      "--sp-3",
+      "--sp-4",
+      "--sp-5",
+      "--sp-6",
+      "--sp-8",
+      "--stress",
+      "--surface-card",
+      "--surface-expanse",
+      "--surface-lab",
+      "--surface-lab-panel",
+      "--surface-page",
+      "--surface-realm",
+      "--surface-sunk",
+      "--t-body",
+      "--t-display",
+      "--t-h1",
+      "--t-h2",
+      "--t-h3",
+      "--t-label",
+      "--t-micro",
+      "--t-small",
+      "--t-title",
+      "--tanuki",
+      "--tanuki-cream",
+      "--text-body",
+      "--text-faint",
+      "--text-muted",
+      "--text-on-dark",
+      "--text-on-dark-mute",
+      "--text-strong",
+      "--track-body",
+      "--track-label",
+      "--track-pop",
+      "--type-body",
+      "--type-display",
+      "--type-h1",
+      "--type-h2",
+      "--type-label",
+      "--valence-neg",
+      "--valence-neu",
+      "--valence-pos",
+      "--void",
+      "--void-2",
+      "--void-edge",
+      "--w-gothic-black",
+      "--w-gothic-bold",
+      "--w-gothic-medium",
+      "--w-gothic-regular",
+      "--warn",
+      "--white"
+    ],
+    "tokenKinds": {
+      "--ink": "color",
+      "--ink-soft": "color",
+      "--ink-mute": "color",
+      "--ink-faint": "color",
+      "--paper": "color",
+      "--paper-2": "color",
+      "--white": "color",
+      "--realm-sky": "color",
+      "--realm-sky-2": "color",
+      "--realm-grass": "color",
+      "--realm-grass-2": "color",
+      "--realm-grass-ink": "color",
+      "--cheese": "color",
+      "--cheese-deep": "color",
+      "--pineapple": "color",
+      "--tanuki": "color",
+      "--tanuki-cream": "color",
+      "--slice-red": "color",
+      "--void": "color",
+      "--void-2": "color",
+      "--void-edge": "color",
+      "--despair": "color",
+      "--despair-deep": "color",
+      "--mutai-leak": "color",
+      "--lab-bg": "color",
+      "--lab-panel": "color",
+      "--lab-hover": "color",
+      "--lab-pressed": "color",
+      "--lab-line": "color",
+      "--lab-line-2": "color",
+      "--lab-text": "font",
+      "--lab-text-2": "font",
+      "--lab-text-mute": "font",
+      "--phosphor": "color",
+      "--phosphor-dim": "color",
+      "--phosphor-glow": "color",
+      "--lab-show": "color",
+      "--lab-travel": "color",
+      "--lab-dayoff": "color",
+      "--lab-error": "color",
+      "--eng-wired": "color",
+      "--eng-built": "color",
+      "--eng-designed": "color",
+      "--eng-active": "color",
+      "--eng-stub": "color",
+      "--eng-concept": "color",
+      "--eng-orphan": "color",
+      "--amber": "color",
+      "--signal-blue": "color",
+      "--jon-red": "color",
+      "--jon-orange": "color",
+      "--jon-yellow": "color",
+      "--jon-green": "color",
+      "--jon-turquoise": "color",
+      "--jon-blue": "color",
+      "--jon-purple": "color",
+      "--jon-pink": "color",
+      "--jon-brown": "color",
+      "--jon-white": "color",
+      "--jon-grey": "color",
+      "--jon-black": "color",
+      "--valence-pos": "color",
+      "--valence-neu": "color",
+      "--valence-neg": "color",
+      "--arousal-high": "color",
+      "--arousal-low": "color",
+      "--contentment": "color",
+      "--bond": "color",
+      "--stress": "color",
+      "--despair-signal": "color",
+      "--beat-orientation": "color",
+      "--beat-disruption": "color",
+      "--beat-resistance": "color",
+      "--beat-preparation": "color",
+      "--beat-commitment": "color",
+      "--beat-escalation": "color",
+      "--beat-revelation": "color",
+      "--beat-resolution": "color",
+      "--evidence-peer": "color",
+      "--evidence-industry": "color",
+      "--evidence-cultural": "color",
+      "--ok": "color",
+      "--warn": "color",
+      "--danger": "color",
+      "--info": "color",
+      "--text-strong": "font",
+      "--text-body": "font",
+      "--text-muted": "font",
+      "--text-faint": "font",
+      "--text-on-dark": "font",
+      "--text-on-dark-mute": "font",
+      "--surface-page": "color",
+      "--surface-card": "color",
+      "--surface-sunk": "color",
+      "--surface-realm": "color",
+      "--surface-lab": "color",
+      "--surface-expanse": "color",
+      "--surface-lab-panel": "color",
+      "--border-ink": "color",
+      "--border-hair": "color",
+      "--border-lab": "color",
+      "--accent": "color",
+      "--accent-deep": "color",
+      "--signal-live": "color",
+      "--font-pop": "font",
+      "--font-gothic": "font",
+      "--font-mono": "font",
+      "--font-ui": "font",
+      "--t-display": "font",
+      "--t-h1": "spacing",
+      "--t-h2": "spacing",
+      "--t-h3": "spacing",
+      "--t-title": "spacing",
+      "--t-body": "spacing",
+      "--t-small": "spacing",
+      "--t-label": "spacing",
+      "--t-micro": "spacing",
+      "--w-gothic-regular": "font",
+      "--w-gothic-medium": "font",
+      "--w-gothic-bold": "font",
+      "--w-gothic-black": "font",
+      "--lh-tight": "font",
+      "--lh-snug": "font",
+      "--lh-body": "font",
+      "--lh-mono": "font",
+      "--track-pop": "font",
+      "--track-label": "font",
+      "--track-body": "font",
+      "--type-display": "font",
+      "--type-h1": "font",
+      "--type-h2": "font",
+      "--type-body": "font",
+      "--type-label": "font",
+      "--sp-0": "spacing",
+      "--sp-1": "spacing",
+      "--sp-2": "spacing",
+      "--sp-3": "spacing",
+      "--sp-4": "spacing",
+      "--sp-5": "spacing",
+      "--sp-6": "spacing",
+      "--sp-8": "spacing",
+      "--sp-10": "spacing",
+      "--sp-12": "spacing",
+      "--sp-16": "spacing",
+      "--sp-20": "spacing",
+      "--r-sm": "spacing",
+      "--r-md": "spacing",
+      "--r-lg": "spacing",
+      "--r-xl": "spacing",
+      "--r-pill": "spacing",
+      "--ink-hair": "spacing",
+      "--ink-line": "spacing",
+      "--ink-bold": "spacing",
+      "--ink-heavy": "spacing",
+      "--shadow-sticker": "shadow",
+      "--shadow-sticker-lg": "shadow",
+      "--shadow-soft": "shadow",
+      "--shadow-pop": "shadow",
+      "--lab-well": "color",
+      "--lab-raise": "shadow",
+      "--glow-phosphor": "shadow",
+      "--glow-amber": "shadow",
+      "--ease-cartoon": "other",
+      "--ease-out": "other",
+      "--dur-fast": "other",
+      "--dur-base": "other",
+      "--dur-slow": "other",
+      "--bob": "other",
+      "--maxw-prose": "spacing",
+      "--maxw-shell": "spacing"
+    },
+    "fontFamilies": [
+      "Inter",
+      "Mochiy Pop One",
+      "Space Mono",
+      "Zen Kaku Gothic New"
+    ]
+  }
+}

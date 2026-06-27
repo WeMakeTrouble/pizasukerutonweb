@@ -1,0 +1,63 @@
+/* ============================================================
+   MUTAIBUTSU — BASE / RESET & ATMOSPHERE
+   Minimal element defaults + the two world-backdrops as utility
+   classes. No component styling here.
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font: var(--type-body);
+  color: var(--text-body);
+  background: var(--surface-page);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3 { color: var(--text-strong); margin: 0 0 var(--sp-4); }
+h1 { font: var(--type-h1); letter-spacing: var(--track-pop); }
+h2 { font: var(--type-h2); letter-spacing: var(--track-pop); }
+h3 { font: var(--w-gothic-bold) var(--t-h3)/var(--lh-snug) var(--font-gothic); }
+p  { margin: 0 0 var(--sp-4); text-wrap: pretty; }
+
+a { color: var(--accent-deep); text-underline-offset: 2px; }
+
+/* ---- the universal mono label (telemetry keys, eyebrows) ---- */
+.mtb-label {
+  font: var(--type-label);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ---- WORLD BACKDROPS ---- */
+
+/* The Realm: pink sky daylight */
+.mtb-realm {
+  background: var(--realm-sky);
+  color: var(--ink);
+}
+
+/* The Lab: dark instrument panel with faint grid */
+.mtb-lab {
+  background:
+    linear-gradient(rgba(52,211,153,0.022) 1px, transparent 1px) 0 0 / 100% 28px,
+    linear-gradient(90deg, rgba(52,211,153,0.022) 1px, transparent 1px) 0 0 / 28px 100%,
+    var(--surface-lab);
+  color: var(--text-on-dark);
+  font-family: var(--font-ui);
+}
+
+/* The Expanse: Yurei's formless white void */
+.mtb-expanse {
+  background:
+    radial-gradient(120% 120% at 50% 0%, var(--void) 40%, var(--void-edge) 100%);
+  color: var(--despair-deep);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: .001ms !important; animation-iteration-count: 1 !important; }
+}

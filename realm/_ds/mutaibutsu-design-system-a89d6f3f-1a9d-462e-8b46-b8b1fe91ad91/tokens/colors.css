@@ -1,0 +1,189 @@
+/* ============================================================
+   MUTAIBUTSU — COLOR TOKENS
+   Two worlds in one palette:
+   · THE REALM   — bright, cartoon, rubber-hose, daylight
+   · THE LAB     — dark instrument panel, telemetry, phosphor
+   Bridged by INK (the universal cartoon outline) and the
+   emotional-coordinate scales the psychological engines emit.
+   ============================================================ */
+
+:root {
+  /* ---- INK & PAPER (the universal cartoon contract) ---- */
+  --ink:            #1a1a1a;   /* every outline, every body of text  */
+  --ink-soft:       #3a3a3a;
+  --ink-mute:       #6b6b6b;
+  --ink-faint:      #9a9a9a;
+  --paper:          #fdf6ec;   /* warm off-white page                */
+  --paper-2:        #f4e9d6;   /* recessed warm surface              */
+  --white:          #ffffff;   /* glove white, sneaker white         */
+
+  /* ---- THE REALM (daylight cartoon world) ---- */
+  --realm-sky:      #ff5580;   /* the signature pink horizon         */
+  --realm-sky-2:    #ff7a9c;
+  --realm-grass:    #6cb84f;
+  --realm-grass-2:  #7ec85d;
+  --realm-grass-ink:#243b1a;   /* deep grass outline                 */
+
+  /* ---- CHARACTER SIGNALS ---- */
+  --cheese:         #ffc233;   /* Piza Sukeruton / Cheese Fang gold  */
+  --cheese-deep:    #e8a317;
+  --pineapple:      #e8d44d;   /* Yurei's sickly pineapple yellow    */
+  --tanuki:         #8a5a3c;   /* Claude the Tanuki brown            */
+  --tanuki-cream:   #d9b88f;
+  --slice-red:      #e23b3b;   /* Angry Slice pepperoni rage         */
+
+  /* ---- THE EXPANSE (Yurei's void) ---- */
+  /* ---- THE EXPANSE (Yurei's void — first-class third world) ----
+     NOT metaphorical: this is Pineaple Yurei's literal body, where the
+     Mutai drift as fractured emotional states. Visual law of this world:
+     · NO ink outlines (the --ink-* line system is ABSENT here)
+     · NO shadows (neither sticker nor lab depth)
+     · NO ground plane, horizon, or perspective anchor
+     Form dissolves; only colour leaks. */
+  --void:           #f3f1ee;   /* the formless white — never pure #fff */
+  --void-2:         #ebe8e3;   /* faintest tonal drift in the white   */
+  --void-edge:      #cfc9c2;   /* the only "edge", and it is soft     */
+  --despair:        #7b6f86;   /* desaturated grief violet           */
+  --despair-deep:   #4b4453;
+  --mutai-leak:     #9a8fa6;   /* default involuntary emotional leak  */
+
+  /* ---- THE LAB (dark telemetry instrument) ----
+     These are the REAL values shipped in the Engine Laboratory
+     dashboard (dashboard/public/index.html). Treat as canonical. */
+  --lab-bg:         #0a0a0f;   /* deep instrument black              */
+  --lab-panel:      #141419;   /* raised card / panel                */
+  --lab-hover:      #1c1c24;   /* hover surface                      */
+  --lab-pressed:    #252530;   /* pressed surface                    */
+  --lab-line:       rgba(255,255,255,0.08);   /* hairline border     */
+  --lab-line-2:     rgba(255,255,255,0.14);   /* border hover        */
+  --lab-text:       #f5f5f7;   /* primary readout text               */
+  --lab-text-2:     #a1a1aa;   /* secondary                          */
+  --lab-text-mute:  #71717a;   /* tertiary / labels                  */
+  --phosphor:       #34d399;   /* live signal emerald (lab accent)   */
+  --phosphor-dim:   #059669;   /* accent dim / pressed               */
+  --phosphor-glow:  rgba(52,211,153,0.12);     /* focus ring / glow   */
+
+  /* lab status channels (run states) */
+  --lab-show:       #34d399;   /* SHOW / active                      */
+  --lab-travel:     #60a5fa;   /* TRAVEL / data                      */
+  --lab-dayoff:     #fbbf24;   /* DAY-OFF / running / warning        */
+  --lab-error:      #f87171;   /* ERROR / failed                     */
+
+  /* engine build-status legend (6-value taxonomy — Artefact ① ground truth) */
+  --eng-wired:      #34d399;   /* 🟢 WIRED — in production tick loop  */
+  --eng-built:      #fbbf24;   /* 🟡 BUILT — passes tests, not wired  */
+  --eng-designed:   #60a5fa;   /* 🔵 DESIGNED — blueprint approved    */
+  --eng-active:     #60a5fa;   /* alias (legacy) → designed           */
+  --eng-stub:       #b8975c;   /* ◐ STUB — 16-line not_implemented    */
+  --eng-concept:    #6b6b78;   /* ⚪ CONCEPT — no code                */
+  --eng-orphan:     #8a6b6b;   /* ✕ ORPHAN — code with no live path   */
+
+  --amber:          #fbbf24;   /* warning / cortisol readout         */
+  --signal-blue:    #60a5fa;   /* data / negative valence            */
+
+  /* ============================================================
+     THE EMOTIONAL COLOUR SCALE — the Colour Engine's 12 (#26)
+     Jonauskaite et al. (2020) palette. GROUND TRUTH from Artefact ④
+     (colourConfig.js). These are ENGINE OUTPUT / TELEMETRY, written to
+     obs_colour_selections + colour_state — the exact colour a Butsu
+     "wears" (Realm = discrete t-shirt) or a Mutai "leaks" (Expanse =
+     continuous). They sit ALONGSIDE the brand palette, NOT inside it —
+     never use a --jon-* colour as a brand primary.
+     PAD→colour: brightness=((P+1)/2)·100, saturation=((A+1)/2)·100,
+     nearest in Euclidean B/S space wins (tie-break: array order). D unused.
+     ============================================================ */
+  --jon-red:        #D93636;   /* warm   */
+  --jon-orange:     #E8842A;   /* warm   */
+  --jon-yellow:     #F5C542;   /* warm   */
+  --jon-green:      #3A9E5C;   /* cool   */
+  --jon-turquoise:  #2AADAD;   /* cool   */
+  --jon-blue:       #2E6EB5;   /* cool   */
+  --jon-purple:     #7A3EAD;   /* cool   */
+  --jon-pink:       #E88BA7;   /* warm   */
+  --jon-brown:      #7A5230;   /* warm   */
+  --jon-white:      #FFFFFF;   /* neutral */
+  --jon-grey:       #808080;   /* neutral */
+  --jon-black:      #000000;   /* neutral */
+
+  /* ============================================================
+     PAD, valence, stress, contentment — the colour-as-data layer
+     ============================================================ */
+  --valence-pos:    #ffc233;   /* warm: joy, contentment             */
+  --valence-neu:    #b8b2a8;   /* neutral / flat affect              */
+  --valence-neg:    #4ea8ff;   /* cool: sorrow, withdrawal           */
+  --arousal-high:   #e23b3b;   /* high activation                    */
+  --arousal-low:    #4b4453;   /* torpor                             */
+  --contentment:    #4caf6a;   /* ikigai green: quiet contentment    */
+  --bond:           #ff5580;   /* oxytocin warmth                    */
+  --stress:         #ffb340;   /* cortisol                           */
+  --despair-signal: #7b6f86;   /* Yurei's harvest condition          */
+
+  /* ============================================================
+     THE NARRATIVE LAYER — blueprints, beats & craft (NAR role)
+     Ground truth: narrative_blueprints / blueprint_beats /
+     storytelling_heuristics. Two encodings live here:
+
+     1. BEAT FUNCTION — the 8 narrative_function values a beat can
+        carry, as a hue scale that reads the shape of a story: cool
+        establishment → warm escalation → the gold of revelation →
+        the green of return. Used by BeatTimeline + FunctionTag.
+        (Rigidity hard/soft is encoded structurally — solid vs dashed
+        edge — never by hue.)
+     2. EVIDENCE QUALITY — the 3-tier provenance of a blueprint
+        (peer-reviewed / industry-validated / cultural-tradition).
+
+     NOTE: every narrative id is a hex colour (CHECK ^#[0-9A-F]{6}$) — an
+     id-namespace scheme that happens to be CSS-valid: #35xxxx blueprints,
+     #354xxx heuristics, #70xxxx speech, #DExxxx arcs, #DFxxxx beats. The
+     #35xxxx range is perceptually near-black, so the UI renders the literal
+     hex as a faithful identity CHIP and carries real differentiation through
+     the evidence tier + the beat-function timeline. Colour = identity — the
+     same contract as the Colour Engine's telemetry — applied raw, never
+     tokenised.
+     ============================================================ */
+  --beat-orientation:  #7B93B8;   /* the ordinary world, the setup     */
+  --beat-disruption:   #E8913C;   /* the break, the call to adventure  */
+  --beat-resistance:   #C77489;   /* refusal, pushback, hesitation     */
+  --beat-preparation:  #3FA98F;   /* the mentor, gathering, approach   */
+  --beat-commitment:   #5B86E0;   /* crossing the threshold            */
+  --beat-escalation:   #E0673F;   /* rising tests, complications       */
+  --beat-revelation:   #ECC74E;   /* the ordeal, the turn, the insight */
+  --beat-resolution:   #4FA86E;   /* the return, the new world         */
+
+  /* evidence quality — blueprint provenance tiers */
+  --evidence-peer:      #8B7FD4;   /* peer-reviewed (scholarly)         */
+  --evidence-industry:  #E0A53C;   /* industry-validated (practice)     */
+  --evidence-cultural:  #C97D54;   /* cultural-tradition (heritage)     */
+
+  /* ---- STATUS ---- */
+  --ok:             #4caf6a;
+  --warn:           #ffb340;
+  --danger:         #e23b3b;
+  --info:           #4ea8ff;
+
+  /* ============================================================
+     SEMANTIC ALIASES — reach for these in product code
+     ============================================================ */
+  --text-strong:    var(--ink);
+  --text-body:      var(--ink-soft);
+  --text-muted:     var(--ink-mute);
+  --text-faint:     var(--ink-faint);
+  --text-on-dark:   var(--lab-text);
+  --text-on-dark-mute: var(--lab-text-mute);
+
+  --surface-page:   var(--paper);
+  --surface-card:   var(--white);
+  --surface-sunk:   var(--paper-2);
+  --surface-realm:  var(--realm-sky);
+  --surface-lab:    var(--lab-bg);
+  --surface-expanse: var(--void);
+  --surface-lab-panel: var(--lab-panel);
+
+  --border-ink:     var(--ink);
+  --border-hair:    rgba(26,26,26,0.14);
+  --border-lab:     var(--lab-line);
+
+  --accent:         var(--cheese);
+  --accent-deep:    var(--cheese-deep);
+  --signal-live:    var(--phosphor);
+}

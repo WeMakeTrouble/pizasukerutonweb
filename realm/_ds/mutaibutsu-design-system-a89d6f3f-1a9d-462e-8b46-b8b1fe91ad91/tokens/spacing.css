@@ -1,0 +1,65 @@
+/* ============================================================
+   MUTAIBUTSU — SPACING, RADIUS, OUTLINE & SHADOW TOKENS
+   ============================================================ */
+
+:root {
+  /* ---- spacing (4px base grid) ---- */
+  --sp-0:   0; /* @kind spacing */
+  --sp-1:   4px;
+  --sp-2:   8px;
+  --sp-3:   12px;
+  --sp-4:   16px;
+  --sp-5:   20px;
+  --sp-6:   24px;
+  --sp-8:   32px;
+  --sp-10:  40px;
+  --sp-12:  48px;
+  --sp-16:  64px;
+  --sp-20:  80px;
+
+  /* ---- radius ---- */
+  --r-sm:   6px;
+  --r-md:   12px;
+  --r-lg:   16px;   /* the cartoon speech-bubble radius            */
+  --r-xl:   24px;
+  --r-pill: 999px;
+
+  /* ============================================================
+     THE OUTLINE SYSTEM — the soul of the cartoon world.
+     Everything in the Realm wears a black ink line, like the
+     rubber-hose mascots. Thickness signals importance.
+     ============================================================ */
+  --ink-hair:   1.5px;   /* fine detail                            */
+  --ink-line:   2.5px;   /* default cartoon outline (bubbles)      */
+  --ink-bold:   4px;     /* hero outlines, buttons                 */
+  --ink-heavy:  6px;     /* mascot silhouettes                     */
+
+  /* ============================================================
+     SHADOW SYSTEM
+     · Realm uses HARD offset shadows (sticker / cel look) — no blur
+     · Lab uses soft glows + inset wells (instrument depth)
+     ============================================================ */
+  --shadow-sticker:    3px 3px 0 var(--ink);          /* small cel  */
+  --shadow-sticker-lg: 6px 6px 0 var(--ink);          /* hero cel   */
+  --shadow-soft:       0 4px 14px rgba(26,26,26,0.12);
+  --shadow-pop:        0 8px 28px rgba(26,26,26,0.18);
+
+  --lab-well:    inset 0 1px 0 rgba(255,255,255,0.04),
+                 inset 0 0 0 1px var(--lab-line);
+  --lab-raise:   0 1px 0 rgba(255,255,255,0.05),
+                 0 8px 24px rgba(0,0,0,0.5);
+  --glow-phosphor: 0 0 12px rgba(94,242,196,0.45);
+  --glow-amber:    0 0 12px rgba(255,179,64,0.4);
+
+  /* ---- motion ---- */
+  --ease-cartoon: cubic-bezier(.34,1.56,.64,1);  /* @kind other */
+  --ease-out:     cubic-bezier(.22,.61,.36,1); /* @kind other */
+  --dur-fast:     140ms; /* @kind other */
+  --dur-base:     240ms; /* @kind other */
+  --dur-slow:     1500ms;   /* @kind other */
+  --bob:          3.4s;     /* @kind other */
+
+  /* ---- layout ---- */
+  --maxw-prose:  680px;
+  --maxw-shell:  1280px;
+}

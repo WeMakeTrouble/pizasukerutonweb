@@ -1,0 +1,57 @@
+/* ============================================================
+   MUTAIBUTSU — TYPOGRAPHY TOKENS
+   Three voices:
+   · POP   (Mochiy Pop One)     — the cartoon mascot voice. Headlines,
+                                   character names, the playful Realm.
+                                   Carries kanji natively.
+   · GOTHIC(Zen Kaku Gothic New)— the readable workhorse. Body, UI,
+                                   prose. Calm, neutral, JP-capable.
+   · MONO  (Space Mono)         — the instrument voice. Telemetry,
+                                   readouts, engine labels, code, data.
+   Webfonts are pulled from Google Fonts in fonts.css.
+   ============================================================ */
+
+:root {
+  --font-pop:    'Mochiy Pop One', 'Hiragino Maru Gothic ProN', sans-serif;
+  --font-gothic: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', sans-serif;
+  --font-mono:   'Space Mono', 'Courier New', ui-monospace, monospace;
+  /* UI / instrument font — the REAL Engine Laboratory dashboard ships
+     Inter. Used for the Lab product surfaces; JP fallback for 無体物. */
+  --font-ui:     'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                 'Zen Kaku Gothic New', sans-serif;
+
+  /* ---- type scale (1.25 major-third-ish, tuned) ---- */
+  --t-display:   clamp(40px, 6vw, 72px);  /* @kind font */
+  --t-h1:        40px;
+  --t-h2:        30px;
+  --t-h3:        22px;
+  --t-title:     18px;
+  --t-body:      16px;
+  --t-small:     14px;
+  --t-label:     12px;   /* mono labels, telemetry keys             */
+  --t-micro:     10px;   /* tooltips, dense readouts                */
+
+  /* ---- weights (Pop & Mono are single-weight) ---- */
+  --w-gothic-regular: 400;  /* @kind font */
+  --w-gothic-medium:  500;  /* @kind font */
+  --w-gothic-bold:    700;  /* @kind font */
+  --w-gothic-black:   900;  /* @kind font */
+
+  /* ---- line heights ---- */
+  --lh-tight:    1.05;   /* @kind font */
+  --lh-snug:     1.25;   /* @kind font */
+  --lh-body:     1.6;    /* @kind font */
+  --lh-mono:     1.45;   /* @kind font */
+
+  /* ---- tracking ---- */
+  --track-pop:    0.01em; /* @kind font */
+  --track-label:  0.14em; /* @kind font */
+  --track-body:   0;      /* @kind font */
+
+  /* ---- semantic roles ---- */
+  --type-display:  var(--w-gothic-black) var(--t-display)/var(--lh-tight) var(--font-pop); /* @kind font */
+  --type-h1:       var(--t-h1)/var(--lh-snug) var(--font-pop); /* @kind font */
+  --type-h2:       var(--t-h2)/var(--lh-snug) var(--font-pop); /* @kind font */
+  --type-body:     var(--w-gothic-regular) var(--t-body)/var(--lh-body) var(--font-gothic); /* @kind font */
+  --type-label:    var(--t-label)/1.2 var(--font-mono); /* @kind font */
+}
