@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ピザスケルトン — Realm Portal</title>
+    <title>&#x30d4;&#x30b6;&#x30b9;&#x30b1;&#x30eb;&#x30c8;&#x30f3; &#x2014; Realm Portal</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Space+Mono&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
@@ -26,124 +26,38 @@
             50% { transform: translateY(-6%); }
         }
 
-        .portal-bg {
-            position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0;
-        }
+        .portal-bg { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; }
+        .broll-layer { position: fixed; inset: 0; z-index: 1; pointer-events: none; }
+        .broll-char { position: absolute; bottom: 0; animation: brollBob 3.4s ease-in-out infinite; }
+        .broll-char img { width: 100%; display: block; filter: drop-shadow(3px 3px 0 rgba(26,26,26,.15)); }
+        .broll-shadow { position: absolute; left: 50%; bottom: -5px; width: 70%; height: 14px; transform: translateX(-50%); background: radial-gradient(closest-side, rgba(36,59,26,.35), transparent); }
 
-        .broll-layer {
-            position: fixed; inset: 0; z-index: 1; pointer-events: none;
-        }
-        .broll-char {
-            position: absolute; bottom: 0;
-            animation: brollBob 3.4s ease-in-out infinite;
-        }
-        .broll-char img {
-            width: 100%; display: block;
-            filter: drop-shadow(3px 3px 0 rgba(26,26,26,.15));
-        }
-        .broll-shadow {
-            position: absolute; left: 50%; bottom: -5px;
-            width: 70%; height: 14px; transform: translateX(-50%);
-            background: radial-gradient(closest-side, rgba(36,59,26,.35), transparent);
-        }
+        .portal-wrap { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding: 48px 24px 60px; }
+        .portal-header { display: flex; align-items: center; gap: 14px; margin-bottom: 8px; }
+        .portal-tanuki { height: 52px; width: auto; filter: drop-shadow(2px 2px 0 rgba(26,26,26,.18)); }
+        .portal-title { font-family: 'Mochiy Pop One', sans-serif; font-size: clamp(22px, 3.5vw, 32px); color: #1a1a1a; text-shadow: 2px 2px 0 #fff; }
+        .portal-sub { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: #999; }
+        .portal-tagline { font-size: 15px; color: #555; text-align: center; max-width: 420px; margin: 0 0 40px; line-height: 1.5; text-shadow: 0 1px 0 rgba(255,255,255,.3); }
 
-        .portal-wrap {
-            position: relative; z-index: 2;
-            display: flex; flex-direction: column; align-items: center;
-            min-height: 100vh; padding: 48px 24px 60px;
-        }
-
-        .portal-header {
-            display: flex; align-items: center; gap: 14px; margin-bottom: 8px;
-        }
-        .portal-tanuki {
-            height: 52px; width: auto;
-            filter: drop-shadow(2px 2px 0 rgba(26,26,26,.18));
-        }
-        .portal-title {
-            font-family: 'Mochiy Pop One', sans-serif;
-            font-size: clamp(22px, 3.5vw, 32px);
-            color: #1a1a1a; text-shadow: 2px 2px 0 #fff;
-        }
-        .portal-sub {
-            font-family: 'Space Mono', monospace;
-            font-size: 10px; letter-spacing: .14em;
-            text-transform: uppercase; color: #999;
-        }
-        .portal-tagline {
-            font-size: 15px; color: #555; text-align: center;
-            max-width: 420px; margin: 0 0 40px; line-height: 1.5;
-            text-shadow: 0 1px 0 rgba(255,255,255,.3);
-        }
-
-        .logout-btn {
-            position: fixed; top: 16px; right: 20px; z-index: 10;
-            font-family: 'Space Mono', monospace;
-            font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
-            background: rgba(26,26,26,.75); color: #fff;
-            border: 2px solid #1a1a1a; border-radius: 8px;
-            padding: 8px 16px; cursor: pointer; transition: background .15s ease;
-        }
+        .logout-btn { position: fixed; top: 16px; right: 20px; z-index: 10; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; background: rgba(26,26,26,.75); color: #fff; border: 2px solid #1a1a1a; border-radius: 8px; padding: 8px 16px; cursor: pointer; transition: background .15s ease; }
         .logout-btn:hover { background: rgba(26,26,26,.95); }
 
-        .tile-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 18px; width: 100%; max-width: 860px;
-        }
+        .tile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; width: 100%; max-width: 860px; }
         .tile-grid .tile-link { display: flex; }
         .tile-grid .tile { flex: 1; display: flex; flex-direction: column; }
         .tile-grid .tile .tile-desc { flex: 1; }
-
         .tile-link { text-decoration: none; color: inherit; display: block; }
-
-        .tile {
-            background: #fff; border: 3.5px solid #1a1a1a;
-            border-radius: 16px; box-shadow: 5px 5px 0 #1a1a1a;
-            padding: 28px 24px;
-            transition: transform .12s ease, box-shadow .12s ease;
-            cursor: pointer;
-        }
-        .tile:hover {
-            transform: translateY(-3px);
-            box-shadow: 5px 8px 0 #1a1a1a;
-        }
-        .tile:active {
-            transform: translate(2px, 2px);
-            box-shadow: 2px 2px 0 #1a1a1a;
-        }
-        .tile.dark {
-            background: #0a0a0f;
-        }
-        .tile.void {
-            background: #f3f1ee;
-        }
-
-        .tile-head {
-            display: flex; align-items: center; gap: 12px; margin-bottom: 10px;
-        }
-        .tile-icon {
-            width: 44px; height: 44px; border-radius: 12px;
-            border: 2.5px solid #1a1a1a;
-            display: flex; align-items: center; justify-content: center; flex: none;
-            font-size: 22px; overflow: hidden;
-        }
-        .tile-icon img {
-            width: 34px; height: 34px; object-fit: contain;
-        }
-        .tile-name {
-            font-family: 'Mochiy Pop One', sans-serif; font-size: 18px;
-        }
-        .tile-desc {
-            font-size: 13px; line-height: 1.5; color: #555;
-        }
-
-        .portal-footer {
-            margin-top: auto; padding-top: 40px; text-align: center;
-            font-family: 'Space Mono', monospace;
-            font-size: 9px; letter-spacing: .16em; text-transform: uppercase;
-            color: #bbb; text-shadow: 0 1px 0 rgba(255,255,255,.25);
-        }
+        .tile { background: #fff; border: 3.5px solid #1a1a1a; border-radius: 16px; box-shadow: 5px 5px 0 #1a1a1a; padding: 28px 24px; transition: transform .12s ease, box-shadow .12s ease; cursor: pointer; }
+        .tile:hover { transform: translateY(-3px); box-shadow: 5px 8px 0 #1a1a1a; }
+        .tile:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #1a1a1a; }
+        .tile.dark { background: #0a0a0f; }
+        .tile.void { background: #f3f1ee; }
+        .tile-head { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+        .tile-icon { width: 44px; height: 44px; border-radius: 12px; border: 2.5px solid #1a1a1a; display: flex; align-items: center; justify-content: center; flex: none; font-size: 22px; overflow: hidden; }
+        .tile-icon img { width: 34px; height: 34px; object-fit: contain; }
+        .tile-name { font-family: 'Mochiy Pop One', sans-serif; font-size: 18px; }
+        .tile-desc { font-size: 13px; line-height: 1.5; color: #555; }
+        .portal-footer { margin-top: auto; padding-top: 40px; text-align: center; font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: .16em; text-transform: uppercase; color: #bbb; text-shadow: 0 1px 0 rgba(255,255,255,.25); }
 
         @media (max-width: 520px) {
             .portal-wrap { padding: 36px 16px 40px; }
@@ -154,149 +68,83 @@
 </head>
 <body>
 
-    <!-- sky + grass backdrop -->
     <svg class="portal-bg" viewBox="0 0 1440 900" preserveAspectRatio="none">
         <rect width="1440" height="900" fill="#ff5580"></rect>
         <path d="M0 600 C 360 572, 720 586, 1080 592 C 1260 596, 1380 574, 1440 596 L1440 900 L0 900 Z" fill="#6fae6b"></path>
         <path d="M0 600 C 360 572, 720 586, 1080 592 C 1260 596, 1380 574, 1440 596" fill="none" stroke="#3b5e2e" stroke-width="3" stroke-opacity="0.38"></path>
     </svg>
 
-    <!-- random Butsu on the grass — populated by JS -->
     <div class="broll-layer" id="brollLayer"></div>
-
-    <!-- logout -->
     <button class="logout-btn" id="logoutBtn">Logout</button>
 
-    <div class="portal-wrap">
+    <button id="tanukiLauncher" style="position:fixed;bottom:24px;right:24px;z-index:60;width:66px;height:66px;border-radius:50%;border:4px solid #1a1a1a;background:#ffc233;box-shadow:3px 3px 0 #1a1a1a;cursor:pointer;padding:0;overflow:hidden;transition:transform .12s ease, box-shadow .12s ease;">
+        <img src="/public/assets/principals/claude-tanuki.png" alt="Claude the Tanuki" style="width:100%;height:100%;object-fit:contain;">
+        <span style="position:absolute;bottom:3px;right:3px;width:15px;height:15px;border-radius:50%;background:#34d399;border:2.5px solid #1a1a1a;"></span>
+    </button>
 
-        <!-- header -->
-        <div class="portal-header">
-            <img src="/public/assets/principals/claude-tanuki.png" alt="" class="portal-tanuki">
+    <div id="conciergePanel" style="position:fixed;top:0;right:-380px;z-index:70;width:370px;height:100vh;background:#fff;border-left:4px solid #1a1a1a;box-shadow:-6px 0 24px rgba(0,0,0,.15);display:flex;flex-direction:column;transition:right .36s cubic-bezier(0.16,1,0.3,1);font-family:'Zen Kaku Gothic New',sans-serif;">
+        <div style="display:flex;align-items:center;gap:12px;padding:18px 20px;border-bottom:3px solid #1a1a1a;background:#ffc233;">
+            <img src="/public/assets/principals/claude-tanuki.png" alt="" style="width:40px;height:40px;border-radius:50%;border:3px solid #1a1a1a;background:#fff;object-fit:contain;">
             <div>
-                <div class="portal-title">ピザスケルトン</div>
-                <div class="portal-sub">Piza Sukeruton Realm</div>
+                <div style="font-family:'Mochiy Pop One',sans-serif;font-size:16px;color:#1a1a1a;">Claude the Tanuki</div>
+                <div style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(26,26,26,.6);">Concierge</div>
+            </div>
+            <button id="conciergeClose" style="margin-left:auto;background:none;border:none;font-size:22px;cursor:pointer;color:#1a1a1a;font-family:'Space Mono',monospace;">&#x2715;</button>
+        </div>
+        <div style="flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:14px;">
+            <div style="background:#f8f5ef;border:2.5px solid #1a1a1a;border-radius:16px;padding:16px 18px;font-size:14px;line-height:1.55;color:#333;box-shadow:2px 2px 0 #1a1a1a;">
+                <div style="font-family:'Mochiy Pop One',sans-serif;font-size:13px;color:#1a1a1a;margin-bottom:6px;">Claude says:</div>
+                Hey! I'm Claude the Tanuki &#x2014; your guide to the Realm. Ask me anything about the Butsu, the engines, or how things work around here.
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                <button class="chip-btn" style="font-family:'Zen Kaku Gothic New',sans-serif;font-size:12px;padding:8px 14px;border:2px solid #1a1a1a;border-radius:999px;background:#fff;cursor:pointer;box-shadow:2px 2px 0 #1a1a1a;transition:transform .1s ease, box-shadow .1s ease;">Who are the Butsu?</button>
+                <button class="chip-btn" style="font-family:'Zen Kaku Gothic New',sans-serif;font-size:12px;padding:8px 14px;border:2px solid #1a1a1a;border-radius:999px;background:#fff;cursor:pointer;box-shadow:2px 2px 0 #1a1a1a;transition:transform .1s ease, box-shadow .1s ease;">Tell me about Pineaple Yurei</button>
+                <button class="chip-btn" style="font-family:'Zen Kaku Gothic New',sans-serif;font-size:12px;padding:8px 14px;border:2px solid #1a1a1a;border-radius:999px;background:#fff;cursor:pointer;box-shadow:2px 2px 0 #1a1a1a;transition:transform .1s ease, box-shadow .1s ease;">What are the Engines?</button>
             </div>
         </div>
 
-        <p class="portal-tagline">You cannot save them. But their Pain does not have to be for nothing.</p>
+    </div>
 
-        <!-- nav tiles -->
-        <div class="tile-grid">
+    <div id="conciergeBackdrop" style="position:fixed;inset:0;z-index:65;background:rgba(0,0,0,.3);opacity:0;pointer-events:none;cursor:pointer;transition:opacity .3s ease;"></div>
 
-            <!-- Realm Observer -->
-            <a href="/public/realm.html" class="tile-link">
-                <div class="tile">
-                    <div class="tile-head">
-                        <div class="tile-icon" style="background:#ff5580;">
-                            <span>👁️</span>
-                        </div>
-                        <div class="tile-name">The Realm</div>
-                    </div>
-                    <div class="tile-desc">Watch the Butsu roam, bond, and clash on the grass under pink skies. The live observer canvas.</div>
-                </div>
-            </a>
-
-            <!-- The Expanse -->
-            <a href="/public/expanse.html" class="tile-link">
-                <div class="tile void">
-                    <div class="tile-head">
-                        <div class="tile-icon" style="background:#e8e4dd;border-color:#c5c0b8;">
-                            <img src="/public/assets/principals/pineaple-yurei.png" alt="">
-                        </div>
-                        <div class="tile-name" style="color:#7b6f86;">The Expanse</div>
-                    </div>
-                    <div class="tile-desc" style="color:#7b6f86;">Pineaple Yurei's Realm where He traps the Mutai in constant Despair.</div>
-                </div>
-            </a>
-
-            <!-- Realm Supply -->
-            <a href="/public/store.html" class="tile-link">
-                <div class="tile">
-                    <div class="tile-head">
-                        <div class="tile-icon" style="background:#ffd666;">
-                            <span>🏪</span>
-                        </div>
-                        <div class="tile-name">Realm Supply</div>
-                    </div>
-                    <div class="tile-desc">Merch from the Realm. Tees, show codes, and the things that make it real.</div>
-                </div>
-            </a>
-
-            <!-- Tanuki Concierge -->
-            <a href="/public/concierge.html" class="tile-link">
-                <div class="tile">
-                    <div class="tile-head">
-                        <div class="tile-icon" style="background:#f5e6c8;">
-                            <img src="/public/assets/principals/claude-tanuki.png" alt="">
-                        </div>
-                        <div class="tile-name">Concierge</div>
-                    </div>
-                    <div class="tile-desc">Ask Claude about anyone in the Realm — how they feel, what they wear, who they love.</div>
-                </div>
-            </a>
-
-            <!-- Claude's Laboratory — level-based access -->
-            <a href="/public/laboratory.html" class="tile-link" id="labTile">
-                <div class="tile dark">
-                    <div class="tile-head">
-                        <div class="tile-icon" style="background:rgba(52,211,153,.12);border-color:rgba(52,211,153,.3);">
-                            <span>⚡</span>
-                        </div>
-                        <div class="tile-name" style="color:#e0e0e0;">Claude's Laboratory</div>
-                    </div>
-                    <div class="tile-desc" style="color:#999;">Learn about the Engines that Power these Realms and run your own Experiments.</div>
-                </div>
-            </a>
-
-            <!-- Tanuki Trebuchet -->
-            <a href="/public/trebuchet.html" class="tile-link">
-                <div class="tile">
-                    <div class="tile-head">
-                        <div class="tile-icon" style="background:#6fae6b;">
-                            <span>🏰</span>
-                        </div>
-                        <div class="tile-name">Tanuki Trebuchet</div>
-                    </div>
-                    <div class="tile-desc">Launch Claude the Tanuki's trebuchet to rescue raccoons from Pineaple Yurei. Real physics.</div>
-                </div>
-            </a>
-
-            <!-- User Dossier -->
-            <a href="/public/dossier.html" class="tile-link">
-                <div class="tile">
-                    <div class="tile-head">
-                        <div class="tile-icon" style="background:#f0ece4;">
-                            <span>👤</span>
-                        </div>
-                        <div class="tile-name">Your Dossier</div>
-                    </div>
-                    <div class="tile-desc">Orders, show codes, and your account. Everything that's yours.</div>
-                </div>
-            </a>
-
+    <div class="portal-wrap">
+        <div class="portal-header">
+            <img src="/public/assets/principals/claude-tanuki.png" alt="" class="portal-tanuki">
+            <div>
+                <div class="portal-title">&#x30d4;&#x30b6;&#x30b9;&#x30b1;&#x30eb;&#x30c8;&#x30f3;</div>
+                <div class="portal-sub">Piza Sukeruton Realm</div>
+            </div>
         </div>
-
-        <!-- footer -->
-        <div class="portal-footer">Another Fine Product from We Make Trouble · © James Straker</div>
-
+        <p class="portal-tagline">You cannot save them. But their Pain does not have to be for nothing.</p>
+        <div class="tile-grid">
+            <a href="/public/realm-story.html" class="tile-link"><div class="tile" style="background:#000;"><div class="tile-head"><div class="tile-icon" style="background:#1a1a1a;border-color:#333;"><span>&#x1f355;&#x1f480;</span></div><div class="tile-name" style="color:#fdf7ec;">The Story</div></div><div class="tile-desc" style="color:#999;">The tale of a Skeleton who really loves Pizza, a Vengeful Pineapple Ghost, and a Mischievous Tanuki.</div></div></a>
+            <a href="/public/realm.html" class="tile-link"><div class="tile"><div class="tile-head"><div class="tile-icon" style="background:#ff5580;"><span>&#x1f441;&#xfe0f;</span></div><div class="tile-name">The Realm</div></div><div class="tile-desc">Watch the Butsu roam, bond, and clash on the grass under pink skies. The live observer canvas.</div></div></a>
+            <a href="/public/expanse.html" class="tile-link"><div class="tile void"><div class="tile-head"><div class="tile-icon" style="background:#e8e4dd;border-color:#c5c0b8;"><span>&#x1f47b;</span></div><div class="tile-name" style="color:#7b6f86;">The Expanse</div></div><div class="tile-desc" style="color:#7b6f86;">Pineaple Yurei's Realm where He traps the Mutai in constant Despair.</div></div></a>
+            <a href="/public/store.html" class="tile-link"><div class="tile"><div class="tile-head"><div class="tile-icon" style="background:#ffd666;"><span>&#x1f3ea;</span></div><div class="tile-name">Realm Supply</div></div><div class="tile-desc">Merch from the Realm. Tees, show codes, and the things that make it real.</div></div></a>
+            <a href="/public/concierge.html" class="tile-link"><div class="tile"><div class="tile-head"><div class="tile-icon" style="background:#f5e6c8;"><span>&#x1f99d;</span></div><div class="tile-name">Concierge</div></div><div class="tile-desc">Ask Claude about anyone in the Realm &#x2014; how they feel, who they love, and who they clash with.</div></div></a>
+            <!-- FIX 1: labTile hidden by default -->
+            <a href="/public/laboratory.html" class="tile-link" id="labTile" style="display:none"><div class="tile dark"><div class="tile-head"><div class="tile-icon" style="background:rgba(52,211,153,.12);border-color:rgba(52,211,153,.3);"><span>&#x1f9ea;</span></div><div class="tile-name" style="color:#e0e0e0;">Claude's Laboratory</div></div><div class="tile-desc" style="color:#999;">Learn about the Engines that Power these Realms and run your own Experiments.</div></div></a>
+            <a href="/public/trebuchet.html" class="tile-link"><div class="tile"><div class="tile-head"><div class="tile-icon" style="background:#6fae6b;"><span>&#x1f3f0;</span></div><div class="tile-name">Tanuki Trebuchet</div></div><div class="tile-desc">Launch Claude the Tanuki's trebuchet to rescue raccoons from Pineaple Yurei. Real physics.</div></div></a>
+            <a href="/public/dossier.html" class="tile-link"><div class="tile"><div class="tile-head"><div class="tile-icon" style="background:#f0ece4;"><span>&#x1f464;</span></div><div class="tile-name">Your Dossier</div></div><div class="tile-desc">Orders, show codes, and your account. Everything that's yours.</div></div></a>
+        </div>
+        <div class="portal-footer">Another Fine Product from We Make Trouble</div>
     </div>
 
     <script>
-        // ── All 62 B-Roll characters ──
+        // FIX 2: BROLL array corrected to match actual filenames on disk
         var BROLL = [
-            '9volt','anchor','bagsy','beans','beer','biggmuff','blender','bong',
-            'boombox','brickphone','capgun','cassette','colours','compass','condom',
-            'cube','d20','desktop','dialphone','dome','eightball','filmcamera',
-            'fizz','fries','fuzzface','guitarpick','heatvhs','hotsauce','inhaler',
-            'jerrycan','juicebox','ketchup','lantern','lavalamp','letters','lighter',
-            'lipstick','lunchbox','matches','nang','nunchucks','ouija','pager',
-            'phone','pill','piraterum','pong','puzzlebox','ramen','sixdie',
-            'sixthsword','skateboard','sparky','spraycan','tampon','teapot',
-            'telescope','tenpin','tissues','trashcan','tupperware','turbo',
+            '9volt','20sideddie','6sideddie','anchor','bagsy','biggmuff','blender','bong',
+            'brickphone','capgun','cassette','colours','compass','condom',
+            'cube','desktop','dialphone','eightball','filmcamera',
+            'fizz','frenchfries','fuzzface','goldengirl','guitarpick','heatvhs','hellraiser','hotsauce','inahler',
+            'jerrycan','juicebox','kerosenelantern','ketchup','lavalamp','letters','lighter',
+            'lipstick','matches','nang','nunchuks','ouija','pager',
+            'phone','piraterum','pong','ramen',
+            'skateboard','sparky','spraycan','tampon','teapot',
+            'telescope','tenpin','trashcan','tupperwarejug','turbo',
             'turborat','vacuumtube','vendingmachine','viewmaster'
         ];
 
-        // ── Pick 5 random unique characters ──
         function shuffle(arr) {
             var a = arr.slice();
             for (var i = a.length - 1; i > 0; i--) {
@@ -325,29 +173,48 @@
             if (pos.left)  el.style.left  = pos.left;
             if (pos.right) el.style.right = pos.right;
             el.style.bottom = pos.bottom;
-
-            el.innerHTML =
-                '<div class="broll-shadow"></div>' +
-                '<img src="/public/assets/broll/' + name + '.png" alt="' + name + '">';
+            el.innerHTML = '<div class="broll-shadow"></div><img src="/public/assets/broll/' + name + '.png" alt="' + name + '">';
             layer.appendChild(el);
         });
 
-        // ── Logout ──
+        var launcher = document.getElementById('tanukiLauncher');
+        var panel = document.getElementById('conciergePanel');
+        var backdrop = document.getElementById('conciergeBackdrop');
+        var closeBtn = document.getElementById('conciergeClose');
+        var panelOpen = false;
+
+        function togglePanel() {
+            panelOpen = !panelOpen;
+            panel.style.right = panelOpen ? '0' : '-380px';
+            backdrop.style.opacity = panelOpen ? '1' : '0'; backdrop.style.pointerEvents = panelOpen ? 'auto' : 'none';
+            launcher.style.transform = panelOpen ? 'scale(0.9)' : '';
+        }
+
+        launcher.addEventListener('click', togglePanel);
+        closeBtn.addEventListener('click', togglePanel);
+        backdrop.addEventListener('click', togglePanel);
+        launcher.addEventListener('mouseenter', function() { if (!panelOpen) { launcher.style.transform = 'translateY(-2px)'; launcher.style.boxShadow = '3px 5px 0 #1a1a1a'; } });
+        launcher.addEventListener('mouseleave', function() { if (!panelOpen) { launcher.style.transform = ''; launcher.style.boxShadow = '3px 3px 0 #1a1a1a'; } });
+
+        document.querySelectorAll('.chip-btn').forEach(function(btn) {
+            btn.addEventListener('mouseenter', function() { btn.style.transform = 'translateY(-1px)'; btn.style.boxShadow = '2px 3px 0 #1a1a1a'; });
+            btn.addEventListener('mouseleave', function() { btn.style.transform = ''; btn.style.boxShadow = '2px 2px 0 #1a1a1a'; });
+            btn.addEventListener('mousedown', function() { btn.style.transform = 'translate(1px,1px)'; btn.style.boxShadow = '1px 1px 0 #1a1a1a'; });
+            btn.addEventListener('mouseup', function() { btn.style.transform = ''; btn.style.boxShadow = '2px 2px 0 #1a1a1a'; });
+        });
+
         document.getElementById('logoutBtn').addEventListener('click', function() {
             fetch('/api/auth/logout', { method: 'POST', credentials: 'same-origin' })
                 .then(function() { window.location.href = '/'; })
                 .catch(function() { window.location.href = '/'; });
         });
 
-        // ── Role check — show Claude's Laboratory for researcher/admin/superadmin ──
         fetch('/api/account/profile', { credentials: 'same-origin' })
             .then(function(res) { return res.ok ? res.json() : null; })
             .then(function(data) {
                 if (data && data.user && data.user.roles) {
                     var roles = data.user.roles;
-                    if (roles.indexOf('researcher') !== -1 ||
-                        roles.indexOf('admin') !== -1 ||
-                        roles.indexOf('superadmin') !== -1) {
+                    if (roles.indexOf('researcher') !== -1 || roles.indexOf('admin') !== -1 || roles.indexOf('superadmin') !== -1) {
                         document.getElementById('labTile').style.display = 'block';
                     }
                 }
